@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indian Weather Forecast Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌏 Indian Weather Forecast Dashboard</h1>
+            <p class="subtitle">Real-time weather data for Indian cities</p>
+        </header>
+
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="single">Single City</button>
+            <button class="tab-btn" data-tab="compare">Compare Cities</button>
+        </div>
+
+        <main>
+            <!-- Single City View -->
+            <div id="single-tab" class="tab-content active">
+                <div class="controls">
+                    <select id="city-select">
+                        <option value="">Select a City</option>
+                    </select>
+                    <select id="forecast-days">
+                        <option value="1">1 Day</option>
+                        <option value="2" selected>2 Days</option>
+                        <option value="3">3 Days</option>
+                    </select>
+                    <button id="get-weather-btn" class="btn-primary">
+                        <i class="fas fa-cloud-sun"></i> Get Forecast
+                    </button>
+                </div>
+
+                <div id="loading" class="loading hidden">
+                    <i class="fas fa-spinner fa-spin"></i> Loading weather data...
+                </div>
+
+                <div id="error" class="error hidden"></div>
+
+                <div id="weather-results" class="hidden">
+                    <div class="daily-summary">
+                        <h2 id="city-title"></h2>
+                        <div id="summary-cards" class="summary-cards"></div>
+                    </div>
+
+                    <div class="charts-grid">
+                        <div class="chart-container">
+                            <h3>Temperature Trends</h3>
+                            <canvas id="temp-chart"></canvas>
+                        </div>
+                        <div class="chart-container">
+                            <h3>Humidity Trends</h3>
+                            <canvas id="humidity-chart"></canvas>
+                        </div>
+                        <div class="chart-container">
+                            <h3>Daily Rainfall</h3>
+                            <canvas id="rain-chart"></canvas>
+                        </div>
+                        <div class="chart-container">
+                            <h3>Wind Speed</h3>
+                            <canvas id="wind-chart"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="map-container">
+                        <h3>City Map & Precipitation Layer</h3>
+                        <div id="map"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Compare Cities View -->
+            <div id="compare-tab" class="tab-content">
+                <div class="controls">
+                    <div class="multi-select">
+                        <h3>Select Cities to Compare:</h3>
+                        <div id="city-checkboxes" class="checkbox-grid"></div>
+                    </div>
+                    <select id="compare-forecast-days">
+                        <option value="1">1 Day</option>
+                        <option value="2" selected>2 Days</option>
+                        <option value="3">3 Days</option>
+                        <option value="4">4 Days</option>
+                        <option value="5">5 Days</option>
+                    </select>
+                    <button id="compare-btn" class="btn-primary">
+                        <i class="fas fa-chart-line"></i> Compare
+                    </button>
+                </div>
+
+                <div id="compare-loading" class="loading hidden">
+                    <i class="fas fa-spinner fa-spin"></i> Loading comparison data...
+                </div>
+
+                <div id="compare-error" class="error hidden"></div>
+
+                <div id="compare-results" class="hidden">
+                    <div class="charts-grid">
+                        <div class="chart-container full-width">
+                            <h3>Temperature Comparison</h3>
+                            <canvas id="compare-temp-chart"></canvas>
+                        </div>
+                        <div class="chart-container full-width">
+                            <h3>Rainfall Comparison</h3>
+                            <canvas id="compare-rain-chart"></canvas>
+                        </div>
+                        <div class="chart-container full-width">
+                            <h3>Humidity Comparison</h3>
+                            <canvas id="compare-humidity-chart"></canvas>
+                        </div>
+                        <div class="chart-container full-width">
+                            <h3>Temperature Range (Min/Max)</h3>
+                            <canvas id="compare-range-chart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
