@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 from datetime import datetime, timedelta
 
 # Configuration
-OPENWEATHER_API_KEY = "faecc2d411cae31997bf7ba82cb62725"  # Your API key
+OPENWEATHER_API_KEY = ""  # Your API key
 
 # Indian cities with coordinates
 INDIAN_CITIES = {
