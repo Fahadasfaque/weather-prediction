@@ -1,5 +1,5 @@
 // ⚠️ IMPORTANT: In production, move this to a backend service!
-const API_KEY = "faecc2d411cae31997bf7ba82cb62725";
+const API_KEY = "your api bro";
 const API_BASE = "https://api.openweathermap.org/data/2.5/forecast";
 const TILE_URL = "https://tile.openweathermap.org/map/precipitation_new/{z}/{x}/{y}.png";
 
